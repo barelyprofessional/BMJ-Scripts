@@ -9,14 +9,6 @@ import subprocess
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger()
 
-new_proc_flags = 0
-new_proc_flags |= 0x00000010  # CREATE_NEW_CONSOLE
-
-new_proc_pkwargs = {
-    'close_fds': True,
-    'creationflags': new_proc_flags
-}
-
 parser = argparse.ArgumentParser(prog='grab_kick_vods', description='Grab Kick VODs for a given channel')
 
 parser.add_argument("-u", "--user-agent", required=True, help="Browser UA must match browser cookies were sourced from")
@@ -29,7 +21,7 @@ logger.info(f"Args parsed. UA: {args.user_agent}, Browser: {args.browser}, Chann
 
 def download_vod(vod_uuid: str):
     logger.info(f"Downloading {vod_uuid}")
-    subprocess.call([args.script, vod_uuid, args.browser, f"\"{args.user_agent}\""])
+    subprocess.call([args.script, vod_uuid, args.browser, f"{args.user_agent}"])
 
 
 cookies = cookies.extract_cookies_from_browser(args.browser)
