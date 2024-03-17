@@ -19,9 +19,9 @@ args = parser.parse_args()
 logger.info(f"Args parsed. UA: {args.user_agent}, Browser: {args.browser}, Channel: {args.channel}, Script: {args.script}")
 
 
-def download_vod(vod_uuid: str):
+def download_vod(vod_uuid: str, vod_slug: str):
     logger.info(f"Downloading {vod_uuid}")
-    subprocess.call([args.script, vod_uuid, args.browser, f"{args.user_agent}"])
+    subprocess.call([args.script, vod_uuid, args.browser, f"{args.user_agent}", vod_slug])
 
 
 cookies = cookies.extract_cookies_from_browser(args.browser)
@@ -36,6 +36,6 @@ logger.info("Got response from the Kick API")
 data = r.json()
 for vod in data["previous_livestreams"]:
     logger.info(f"Downloading {vod["slug"]}, UUID is {vod["video"]["uuid"]}")
-    download_vod(vod['video']['uuid'])
+    download_vod(vod['video']['uuid'], vod['slug'])
 
 logger.info("Done!")
