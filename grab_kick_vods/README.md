@@ -30,5 +30,6 @@ arguments
 1. VOD UUID
 2. Browser string passed in `-b` / `--browser`
 3. User-Agent string passed in `-u` / `--user-agent` wrapped in double quotes
+4. VOD Slug
 
-e.g. `example.sh ac644e94-1cc5-47af-aaaa-9bf4ede84a47 firefox "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:122.0) Gecko/20100101 Firefox/122.0"`
+e.g. `example.sh ac644e94-1cc5-47af-aaaa-9bf4ede84a47 firefox "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:122.0) Gecko/20100101 Firefox/122.0" 04275329-1-year-on-kick-today-discord-youtube-tiktok-paypal-shibasso`
